@@ -1,3 +1,4 @@
+
 # README
 
 A mock api for DSSD 2022 subject 
@@ -22,30 +23,39 @@ A mock api for DSSD 2022 subject
 
 ## Authentication
 
-Request
+Default user
+    **email**: luismiguel@gmail.com
+    **password**: 123abc
 
-`curl --location --request POST 'https://wwg-provider.fly.dev/api/v1/auth/login' \
+
+**Request**
+
+```
+curl --location --request POST 'https://wwg-provider.fly.dev/api/v1/auth/login' \
 --form 'email="luismiguel@gmail.com"' \
---form 'password="123abc"'`
+--form 'password="123abc"'
+```
 
-Response
-
-`{
+**Response**
+```
+{
     "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NjY4NTYzNDN9.clTk05r7CLTZAPrXsK-zcSwMva0avyegK4WVHJwFMUE"
 }
-`
+```
 
 ## Materials Catalog
 
-Request
+**Request**
 
-`curl --location --request GET 'https://wwg-provider.fly.dev/api/v1/users' \
---header 'Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NjY4NTM2MDZ9.xP-NKG1YxlIv3AGnGIatO1ZXygVwugLBtPlxcwU6MfM'
-`
+```
+curl --location --request GET 'https://wwg-provider.fly.dev/api/v1/materials' \
+--header 'Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NjY4NTYzNDN9.clTk05r7CLTZAPrXsK-zcSwMva0avyegK4WVHJwFMUE'
+```
 
-Response
+**Response**
 
-`[
+```
+[
     {
         "id": 1,
         "name": "Plstic",
@@ -54,4 +64,48 @@ Response
         "updated_at": "2022-10-20T07:20:42.694Z"
     }
 ]
-`
+```
+
+## Reserve Materials
+
+**Request**
+
+```
+curl --location --request PUT 'http://localhost:3000/api/v1/materials/1/book' \
+--header 'Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NjY5Mjc5ODF9.oWJ0Vj_Qmr_Z9K616maRjzOzGgbolTv8o4o4gyDrREU' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"quantity": 1
+}'
+```
+
+**Response**
+
+## Find materials
+**Request**
+```
+curl --location -g --request GET 'http://localhost:3000/api/v1/materials/find?ids[]=1&ids[]=2' \
+--header 'Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NjY4NTYzNDN9.clTk05r7CLTZAPrXsK-zcSwMva0avyegK4WVHJwFMUE'
+```
+**Response**
+
+
+```
+[
+    {
+        "id": 1,
+        "name": "vidrio",
+        "quantity": "1",
+        "created_at": "2022-10-20T07:20:42.694Z",
+        "updated_at": "2022-10-21T04:49:55.300Z"
+    },
+    {
+        "id": 2,
+        "name": "Plastic",
+        "quantity": "22",
+        "created_at": "2022-10-21T04:50:41.520Z",
+        "updated_at": "2022-10-21T04:50:41.520Z"
+    }
+]
+
+```

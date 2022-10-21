@@ -1,10 +1,16 @@
 class Api::V1::MaterialsController < ApplicationController
-  before_action :set_material, only: %i[ show update destroy ]
+  before_action :set_material, only: %i[ show update destroy book ]
 
   # GET /materials
   # GET /materials.json
   def index
     @materials = Material.all
+    render json: @materials
+  end
+
+  def findByIds
+    #@materials = Material.where(id: material_find_params)
+    @materials = Material.find(material_find_params)
     render json: @materials
   end
 
@@ -19,7 +25,7 @@ class Api::V1::MaterialsController < ApplicationController
     @material = Material.new(material_params)
 
     if @material.save
-      render :show, status: :created, location: api_v1_material_url(@material)
+      render json: @material, status: :created, location: api_v1_material_url(@material)
     else
       render json: @material.errors, status: :unprocessable_entity
     end
@@ -41,6 +47,14 @@ class Api::V1::MaterialsController < ApplicationController
     @material.destroy
   end
 
+  def book
+    if @material.update(quantity: @material.quantity.to_i - material_params['quantity'])
+      render json: {result: 'ok'}, status: :ok
+    else
+      render json: @material.errors, status: :unprocessable_entity
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_material
@@ -51,4 +65,8 @@ class Api::V1::MaterialsController < ApplicationController
     def material_params
       params.require(:material).permit(:name, :quantity)
     end
+
+  def material_find_params
+    params.require(:ids)
+  end
 end
