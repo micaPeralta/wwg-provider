@@ -1,0 +1,682 @@
+{
+	"info": {
+		"_postman_id": "ca051d64-3b35-4fe9-ae3f-5a4b113bfef1",
+		"name": "WBG PROVIDER",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10799928"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "luismiguel@gmail.com",
+							"description": "User email ",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123abc",
+							"description": "User password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{apiUrl}}/api/v1/auth/login",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Auth",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "luismiguel@gmail.com",
+									"description": "User email ",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123abc",
+									"description": "User password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://wwg-provider.fly.dev/api/v1/auth/login",
+							"protocol": "https",
+							"host": [
+								"wwg-provider",
+								"fly",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "0"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-download-options",
+							"value": "noopen"
+						},
+						{
+							"key": "x-permitted-cross-domain-policies",
+							"value": "none"
+						},
+						{
+							"key": "referrer-policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "vary",
+							"value": "Accept"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"cb931f9864aa73a6fa6fc4460229bbef\""
+						},
+						{
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "x-request-id",
+							"value": "4bf9705a-79cb-49c9-968f-38b53828a327"
+						},
+						{
+							"key": "x-runtime",
+							"value": "0.309686"
+						},
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "fly-cache-status",
+							"value": "MISS"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "date",
+							"value": "Fri, 21 Oct 2022 20:46:10 GMT"
+						},
+						{
+							"key": "server",
+							"value": "Fly/51c45b355 (2022-10-19)"
+						},
+						{
+							"key": "via",
+							"value": "1.1 fly.io"
+						},
+						{
+							"key": "fly-request-id",
+							"value": "01GFY4QMBYG0042MQXEXT5YD1K-gru"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NjY5ODk5NzF9.8DbMiYNlUgdIyR1IHTHvd0Eo3xb7Mvs0dd-XOd2yMBM\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get materials",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{apitoken}}",
+						"type": "text",
+						"description": "token"
+					}
+				],
+				"url": {
+					"raw": "{{apiUrl}}/api/v1/materials",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"materials"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get materials",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"description": "token"
+							}
+						],
+						"url": {
+							"raw": "https://wwg-provider.fly.dev/api/v1/materials",
+							"protocol": "https",
+							"host": [
+								"wwg-provider",
+								"fly",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"materials"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "0"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-download-options",
+							"value": "noopen"
+						},
+						{
+							"key": "x-permitted-cross-domain-policies",
+							"value": "none"
+						},
+						{
+							"key": "referrer-policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"9da81b8384e2d619e0aa34b1f1df8686\""
+						},
+						{
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "x-request-id",
+							"value": "34579865-d6dc-4c1c-a60f-62975055274c"
+						},
+						{
+							"key": "x-runtime",
+							"value": "0.009750"
+						},
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "fly-cache-status",
+							"value": "MISS"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "date",
+							"value": "Fri, 21 Oct 2022 20:48:59 GMT"
+						},
+						{
+							"key": "server",
+							"value": "Fly/51c45b355 (2022-10-19)"
+						},
+						{
+							"key": "via",
+							"value": "1.1 fly.io"
+						},
+						{
+							"key": "fly-request-id",
+							"value": "01GFY4WSC68748P6AZGJ58BH9V-gru"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"name\": \"Nylon\",\n        \"quantity\": \"25\"\n    },\n    {\n        \"name\": \"Beryllium\",\n        \"quantity\": \"22\"\n    },\n    {\n        \"name\": \"Metal\",\n        \"quantity\": \"20\"\n    },\n    {\n        \"name\": \"nut\",\n        \"quantity\": \"25\"\n    },\n    {\n        \"name\": \"Plastic\",\n        \"quantity\": \"24\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Book material",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{apitoken}}",
+						"description": "token  ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"quantity\": 1, \n    \"derivery_limt_date\": \"2020-12-01\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiUrl}}/api/v1/materials/1/book",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"materials",
+						"1",
+						"book"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Book material",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "token  ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"quantity\": 1, \n    \"derivery_limt_date\": \"2020-12-01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wwg-provider.fly.dev/api/v1/materials/1/book",
+							"protocol": "https",
+							"host": [
+								"wwg-provider",
+								"fly",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"materials",
+								"1",
+								"book"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "0"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-download-options",
+							"value": "noopen"
+						},
+						{
+							"key": "x-permitted-cross-domain-policies",
+							"value": "none"
+						},
+						{
+							"key": "referrer-policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"1aad36b0fb02621b951649811957ba7a\""
+						},
+						{
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "x-request-id",
+							"value": "c771ae35-e12b-451a-9e74-30cba5f4b64d"
+						},
+						{
+							"key": "x-runtime",
+							"value": "0.088109"
+						},
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "fly-cache-status",
+							"value": "MISS"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "date",
+							"value": "Fri, 21 Oct 2022 20:44:57 GMT"
+						},
+						{
+							"key": "server",
+							"value": "Fly/51c45b355 (2022-10-19)"
+						},
+						{
+							"key": "via",
+							"value": "1.1 fly.io"
+						},
+						{
+							"key": "fly-request-id",
+							"value": "01GFY4NDMFYBN8TG13JRFKV5C0-gru"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": \"ok\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Find materials",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{apitoken}}",
+						"description": "token",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{apiUrl}}/api/v1/materials/find?ids[]=1&ids[]=2",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"materials",
+						"find"
+					],
+					"query": [
+						{
+							"key": "ids[]",
+							"value": "1"
+						},
+						{
+							"key": "ids[]",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Find materials",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "token",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://wwg-provider.fly.dev/api/v1/materials/find?ids[]=1&ids[]=2",
+							"protocol": "https",
+							"host": [
+								"wwg-provider",
+								"fly",
+								"dev"
+							],
+							"path": [
+								"api",
+								"v1",
+								"materials",
+								"find"
+							],
+							"query": [
+								{
+									"key": "ids[]",
+									"value": "1"
+								},
+								{
+									"key": "ids[]",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "0"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-download-options",
+							"value": "noopen"
+						},
+						{
+							"key": "x-permitted-cross-domain-policies",
+							"value": "none"
+						},
+						{
+							"key": "referrer-policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"b5e5e96a13d7e369be1b41509f6d29b3\""
+						},
+						{
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "x-request-id",
+							"value": "7673a41d-1fee-419e-a63c-d398efbb0c4f"
+						},
+						{
+							"key": "x-runtime",
+							"value": "0.010854"
+						},
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "fly-cache-status",
+							"value": "MISS"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "date",
+							"value": "Fri, 21 Oct 2022 20:45:11 GMT"
+						},
+						{
+							"key": "server",
+							"value": "Fly/51c45b355 (2022-10-19)"
+						},
+						{
+							"key": "via",
+							"value": "1.1 fly.io"
+						},
+						{
+							"key": "fly-request-id",
+							"value": "01GFY4NTQY35NXRRV1VFRGB8V3-gru"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"name\": \"Plastic\",\n        \"quantity\": \"24\",\n        \"delivery_date\": \"2022-11-07\"\n    },\n    {\n        \"name\": \"Nylon\",\n        \"quantity\": \"25\",\n        \"delivery_date\": \"2023-04-05\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Reserve manufracture time",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{apitoken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fromDate\": \"2022-10-01\",\n    \"toDate\": \"2022-10-30\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiUrl}}/api/v1/manufacture",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"manufacture"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiUrl",
+			"value": "https://wwg-provider.fly.dev",
+			"type": "string"
+		},
+		{
+			"key": "apitoken",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
