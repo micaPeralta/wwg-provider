@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: wwg_provider_production
-  username: wwg_provider
+  database: wwg-provider-db
+  username: postgres
   password: <%= ENV["WWG_PROVIDER_DATABASE_PASSWORD"] %>

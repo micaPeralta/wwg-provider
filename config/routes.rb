@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :api do
         namespace :v1 do
           resources :materials , defaults: { format: 'json' }
-          resources:users
+          resources :users, defaults: { format: 'json' }
           post '/auth/login', to: 'authentication#login'
         end
     end

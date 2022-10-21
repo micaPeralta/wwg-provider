@@ -1,4 +1,4 @@
-# fly.toml file generated for wwg-provider on 2022-10-20T01:31:59-03:00
+# fly.toml file generated for wwg-provider on 2022-10-20T21:54:15-03:00
 
 app = "wwg-provider"
 kill_signal = "SIGINT"

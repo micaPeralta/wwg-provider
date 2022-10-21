@@ -1,3 +1,4 @@
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -13,10 +14,10 @@
 
 
     materials = Material.create([
-    {name: 'Plastic', quantity: Random.new.rand(20..30)}
-    {name: 'Nylon', quantity: Random.new.rand(20..30)}
-    {name: 'Beryllium', quantity: Random.new.rand(20..30)}
-    {name: 'Beryllium', quantity: Random.new.rand(20..30)}
-    {name: 'Metal', quantity: Random.new.rand(20..30)}
+    {name: 'Plastic', quantity: Random.new.rand(20..30)},
+    {name: 'Nylon', quantity: Random.new.rand(20..30)},
+    {name: 'Beryllium', quantity: Random.new.rand(20..30)},
+    {name: 'Beryllium', quantity: Random.new.rand(20..30)},
+    {name: 'Metal', quantity: Random.new.rand(20..30)},
     {name: 'nut', quantity: Random.new.rand(20..30)}
     ])
