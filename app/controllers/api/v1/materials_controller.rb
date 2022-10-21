@@ -48,7 +48,7 @@ class Api::V1::MaterialsController < ApplicationController
   end
 
   def book
-    if @material.update(quantity: @material.quantity.to_i - material_params['quantity'])
+    if @material.update(quantity: @material.quantity.to_i - book_materials_param['quantity'])
       render json: {result: 'ok'}, status: :ok
     else
       render json: @material.errors, status: :unprocessable_entity
@@ -66,6 +66,9 @@ class Api::V1::MaterialsController < ApplicationController
       params.require(:material).permit(:name, :quantity)
     end
 
+  def book_materials_param
+    params.require(:material).permit(:name, :quantity)
+  end
   def material_find_params
     params.require(:ids)
   end
