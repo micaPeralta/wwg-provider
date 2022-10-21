@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
           resources :users, defaults: { format: 'json' }
           post '/auth/login', to: 'authentication#login'
+          post '/manufacture', to: 'manufacture#index'
         end
     end
   # Defines the root path route ("/")
