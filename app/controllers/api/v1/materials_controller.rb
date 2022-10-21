@@ -4,13 +4,21 @@ class Api::V1::MaterialsController < ApplicationController
   # GET /materials
   # GET /materials.json
   def index
-    @materials = Material.all
+    @materials = Material.all.map{|m| {
+      "name": m.name,
+      "quantity": m.quantity
+    }}
     render json: @materials
   end
 
   def findByIds
     #@materials = Material.where(id: material_find_params)
     @materials = Material.find(material_find_params)
+                         .map{|m| {
+                           "name": m.name,
+                           "quantity": m.quantity,
+                           "delivery_date":  Date.parse(rand(Time.now .. 1.year.from_now).to_s)
+                         }}
     render json: @materials
   end
 
@@ -48,6 +56,10 @@ class Api::V1::MaterialsController < ApplicationController
   end
 
   def book
+    if (!book_validations)
+      return
+    end
+
     if @material.update(quantity: @material.quantity.to_i - book_materials_param['quantity'])
       render json: {result: 'ok'}, status: :ok
     else
@@ -56,6 +68,27 @@ class Api::V1::MaterialsController < ApplicationController
   end
 
   private
+
+  def book_validations
+
+    if (!book_materials_param["derivery_limt_date"].present?)
+      render json: {error: 'derivery_limt_date is required'}, status: 400
+      return false
+    end
+
+    if (!book_materials_param["id"].present?)
+      render json: {error: 'Material id is required'}, status: 400
+      return false
+    end
+
+    if (!book_materials_param["quantity"].present?)
+      render json: {error: 'quantity is required'}, status: 400
+      return false
+    end
+
+    true
+
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_material
       @material = Material.find(params[:id])
@@ -67,8 +100,9 @@ class Api::V1::MaterialsController < ApplicationController
     end
 
   def book_materials_param
-    params.require(:material).permit(:name, :quantity)
+    params.permit(:id, :quantity, :derivery_limt_date)
   end
+
   def material_find_params
     params.require(:ids)
   end
