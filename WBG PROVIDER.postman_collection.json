@@ -252,7 +252,7 @@
 						},
 						{
 							"key": "etag",
-							"value": "W/\"9da81b8384e2d619e0aa34b1f1df8686\""
+							"value": "W/\"faceec5f1f989f28c209def4bfa05b77\""
 						},
 						{
 							"key": "cache-control",
@@ -260,11 +260,11 @@
 						},
 						{
 							"key": "x-request-id",
-							"value": "34579865-d6dc-4c1c-a60f-62975055274c"
+							"value": "af3fd95b-a018-4d2b-b551-91a61bf12cc0"
 						},
 						{
 							"key": "x-runtime",
-							"value": "0.009750"
+							"value": "0.061062"
 						},
 						{
 							"key": "transfer-encoding",
@@ -280,7 +280,7 @@
 						},
 						{
 							"key": "date",
-							"value": "Fri, 21 Oct 2022 20:48:59 GMT"
+							"value": "Fri, 21 Oct 2022 23:26:18 GMT"
 						},
 						{
 							"key": "server",
@@ -292,11 +292,11 @@
 						},
 						{
 							"key": "fly-request-id",
-							"value": "01GFY4WSC68748P6AZGJ58BH9V-gru"
+							"value": "01GFYDWV9XX5FFZSQ8T13FXSDR-gru"
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"name\": \"Nylon\",\n        \"quantity\": \"25\"\n    },\n    {\n        \"name\": \"Beryllium\",\n        \"quantity\": \"22\"\n    },\n    {\n        \"name\": \"Metal\",\n        \"quantity\": \"20\"\n    },\n    {\n        \"name\": \"nut\",\n        \"quantity\": \"25\"\n    },\n    {\n        \"name\": \"Plastic\",\n        \"quantity\": \"24\"\n    }\n]"
+					"body": "[\n    {\n        \"id\": 2,\n        \"name\": \"Nylon\",\n        \"quantity\": \"25\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Beryllium\",\n        \"quantity\": \"22\"\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Metal\",\n        \"quantity\": \"20\"\n    },\n    {\n        \"id\": 5,\n        \"name\": \"nut\",\n        \"quantity\": \"25\"\n    },\n    {\n        \"id\": 1,\n        \"name\": \"Plastic\",\n        \"quantity\": \"23\"\n    }\n]"
 				}
 			]
 		},
@@ -314,7 +314,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": 1,\n    \"quantity\": 1, \n    \"derivery_limt_date\": \"2020-12-01\"\n}",
+					"raw": "[\n    {\n    \"id\": 1,\n    \"quantity\": 1, \n    \"delivery_limit_date\": \"2020-12-01\"\n    }\n]",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -350,7 +350,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 1,\n    \"quantity\": 1, \n    \"derivery_limt_date\": \"2020-12-01\"\n}",
+							"raw": "[\n    {\n        \"id\": 1,\n        \"quantity\": 1,\n        \"delivery_limit_date\": \"2020-12-01\"\n    }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
