@@ -5,6 +5,7 @@ class Api::V1::MaterialsController < ApplicationController
   # GET /materials.json
   def index
     @materials = Material.all.map{|m| {
+      "id": m.id,
       "name": m.name,
       "quantity": m.quantity
     }}
@@ -71,8 +72,8 @@ class Api::V1::MaterialsController < ApplicationController
 
   def book_validations
 
-    if (!book_materials_param["derivery_limt_date"].present?)
-      render json: {error: 'derivery_limt_date is required'}, status: 400
+    if (!book_materials_param["delivery_limit_date"].present?)
+      render json: {error: 'delivery_limit_date is required'}, status: 400
       return false
     end
 
@@ -100,7 +101,7 @@ class Api::V1::MaterialsController < ApplicationController
     end
 
   def book_materials_param
-    params.permit(:id, :quantity, :derivery_limt_date)
+    params.permit(:id, :quantity, :delivery_limit_date)
   end
 
   def material_find_params
