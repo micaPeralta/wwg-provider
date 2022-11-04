@@ -1,3 +1,4 @@
+require 'dry/schema'
 class Api::V1::MaterialsController < ApplicationController
   before_action :set_material, only: %i[ show update destroy book ]
 
@@ -13,14 +14,23 @@ class Api::V1::MaterialsController < ApplicationController
   end
 
   def findByIds
-    #@materials = Material.where(id: material_find_params)
-    @materials = Material.find(material_find_params)
+    validation = FindMaterialsSchema.call(params.as_json)
+    if (validation.success?)
+      materials = params.as_json["materials"]
+      materialsIds = materials.collect { |m| m['id'] }
+      @materials = Material.find(materialsIds)
                          .map{|m| {
-                           "name": m.name,
-                           "quantity": m.quantity,
-                           "delivery_date":  Date.parse(rand(Time.now .. 1.year.from_now).to_s)
+                           id: m.id,
+                           providers: [
+                             {provider_id: rand(1..10), "delivery_date":  Date.parse(rand(Time.now .. 1.year.from_now).to_s) },
+                             {provider_id: rand(1..10), "delivery_date":  Date.parse(rand(Time.now .. 1.year.from_now).to_s)}
+                           ]
                          }}
-    render json: @materials
+      render json: @materials
+    else
+      render json: validation.errors.to_h.inspect, status: 400
+    end
+  #
   end
 
   # GET /materials/1
@@ -106,5 +116,12 @@ class Api::V1::MaterialsController < ApplicationController
 
   def material_find_params
     params.require(:ids)
+  end
+
+  FindMaterialsSchema = Dry::Schema.JSON do
+    required(:materials).array(:hash) do
+      required(:id).value(:integer)
+      required(:quantity).value(:integer)
+    end
   end
 end
