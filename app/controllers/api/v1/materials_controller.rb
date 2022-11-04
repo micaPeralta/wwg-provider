@@ -13,13 +13,33 @@ class Api::V1::MaterialsController < ApplicationController
     render json: @materials
   end
 
+  def book
+    validation = BookMaterialsSchema.call(params.as_json)
+    if (validation.success?)
+      booking = params.as_json["booking"]
+      materialsIds = booking.collect { |m| m['material_id'] }
+      @materials = Material.find(materialsIds)
+      response = @materials.map {|m|
+        book_material = booking.find { |b| b["material_id"] = m.id}
+
+        if (m.quantity.to_i > 0)
+          m.update(quantity: m.quantity.to_i - book_material['quantity'])
+        end
+      }
+      render json:  {"delivery_date":  Date.parse(rand(Time.now .. 1.year.from_now).to_s)}, status: :ok
+    else
+      render json: validation.errors.to_h.inspect, status: 400
+    end
+  end
+
+
+
   def findByIds
     validation = FindMaterialsSchema.call(params.as_json)
     if (validation.success?)
       materials = params.as_json["materials"]
       materialsIds = materials.collect { |m| m['id'] }
-      @materials = Material.find(materialsIds)
-                         .map{|m| {
+      @materials = Material.find(materialsIds).map{|m| {
                            id: m.id,
                            providers: [
                              {provider_id: rand(1..10), "delivery_date":  Date.parse(rand(Time.now .. 1.year.from_now).to_s) },
@@ -66,17 +86,7 @@ class Api::V1::MaterialsController < ApplicationController
     @material.destroy
   end
 
-  def book
-    if (!book_validations)
-      return
-    end
 
-    if @material.update(quantity: @material.quantity.to_i - book_materials_param['quantity'])
-      render json: {result: 'ok'}, status: :ok
-    else
-      render json: @material.errors, status: :unprocessable_entity
-    end
-  end
 
   private
 
@@ -96,8 +106,6 @@ class Api::V1::MaterialsController < ApplicationController
       render json: {error: 'quantity is required'}, status: 400
       return false
     end
-
-    true
 
   end
     # Use callbacks to share common setup or constraints between actions.
@@ -121,6 +129,14 @@ class Api::V1::MaterialsController < ApplicationController
   FindMaterialsSchema = Dry::Schema.JSON do
     required(:materials).array(:hash) do
       required(:id).value(:integer)
+      required(:quantity).value(:integer)
+    end
+  end
+
+  BookMaterialsSchema = Dry::Schema.JSON do
+    required(:booking).array(:hash) do
+      required(:material_id).value(:integer)
+      required(:provider_id).value(:integer)
       required(:quantity).value(:integer)
     end
   end
