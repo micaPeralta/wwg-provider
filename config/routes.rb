@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
           resources :materials , defaults: { format: 'json' } ,only: [:index]do
             collection do
-              put ':id/book' , to:'materials#book'
+              post '/book' , to:'materials#book'
               post '/find' , to:'materials#findByIds'
             end
           end

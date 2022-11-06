@@ -1,14 +1,13 @@
 require 'dry/schema'
 class Api::V1::MaterialsController < ApplicationController
-  before_action :set_material, only: %i[ show update destroy book ]
+  before_action :set_material, only: %i[ show update destroy ]
 
   # GET /materials
   # GET /materials.json
   def index
     @materials = Material.all.map{|m| {
       "id": m.id,
-      "name": m.name,
-      "quantity": m.quantity
+      "name": m.name
     }}
     render json: @materials
   end
@@ -139,5 +138,6 @@ class Api::V1::MaterialsController < ApplicationController
       required(:provider_id).value(:integer)
       required(:quantity).value(:integer)
     end
+    required(:delivery_address)
   end
 end
